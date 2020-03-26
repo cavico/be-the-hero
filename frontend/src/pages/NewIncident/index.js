@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
-import api from '../../services/api';
+
 import './styles.css';
+import api from '../../services/api';
 
+import { FiArrowLeft } from 'react-icons/fi';
 import logoImg from '../../assets/logo.svg';
-
 
 export default function NewIncident() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
 
-  const ongId = localStorage.getItem('ongId');
   const history = useHistory();
+
+  const ongId = localStorage.getItem('ongId');
 
   async function handleNewIncident(e) {
     e.preventDefault();
@@ -22,7 +23,6 @@ export default function NewIncident() {
       description,
       value
     };
-
     try {
       await api.post('incidents', data, {
         headers: {
@@ -31,28 +31,26 @@ export default function NewIncident() {
       });
       history.push('/profile');
     } catch (error) {
-      window.alert('Erro ao cadastrar caso. Tente novamente');
+      alert('Erro ao cadastrar caso. Tente novamente');
     }
   }
 
   return (
-    <div className="new-incident-container">
-      <div className="content">
-        <section>
+    <main className="container new-incident-container">
+      <div className="content-shadowed">
+        <section className="column-narrow">
           <img src={logoImg} alt="Be The Hero" />
-          <h1>Cadastrar novo caso</h1>
-          <p>
+          <h1 className="title">Cadastrar novo caso</h1>
+          <p className="subtitle">
             Descreva o caso detalhadamente para
             encontrar um herói para resolver isso.
           </p>
-
           <Link className="back-link" to="/profile">
             <FiArrowLeft size={16} color="#E02041" />
             Voltar para home
           </Link>
         </section>
-
-        <form onSubmit={handleNewIncident}>
+        <form onSubmit={handleNewIncident} className="column-wide main-form">
           <input
             value={title}
             onChange={e => setTitle(e.target.value)}
@@ -68,6 +66,6 @@ export default function NewIncident() {
           <button className="button">Cadastrar</button>
         </form>
       </div>
-    </div>
+    </main>
   );
 }

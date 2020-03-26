@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import api from '../../services/api';
 import './styles.css';
+import api from '../../services/api';
 
-import heroesImg from '../../assets/heroes.png';
-import logoImg from '../../assets/logo.svg';
 import { FiLogIn } from 'react-icons/fi'
+import logoImg from '../../assets/logo.svg';
+import heroesImg from '../../assets/heroes.png';
 
 export default function Logon() {
   const [id, setId] = useState('');
@@ -15,25 +15,22 @@ export default function Logon() {
 
   async function handleLogin(e) {
     e.preventDefault();
-
     try {
       const response = await api.post('sessions', { id });
-
-      window.localStorage.setItem('ongId', id);
-      window.localStorage.setItem('ongName', response.data.name);
-
+      localStorage.setItem('ongId', id);
+      localStorage.setItem('ongName', response.data.name);
       history.push('/profile');
     } catch (error) {
-      window.alert('Falha no login, tente novamente');
+      alert('Falha no login, tente novamente');
     }
   }
 
   return (
-    <div className="logon-container">
-      <section className="form">
+    <main className="container logon-container">
+      <section className="column-medium">
         <img src={logoImg} alt="Be The Hero" />
-        <form onSubmit={handleLogin}>
-          <h1>Faça seu logon</h1>
+        <form onSubmit={handleLogin} className="main-form">
+          <h1 className="title">Faça seu logon</h1>
           <input
             value={id}
             onChange={e => setId(e.target.value)}
@@ -46,6 +43,6 @@ export default function Logon() {
         </form>
       </section>
       <img src={heroesImg} alt="Heroes" />
-    </div>
+    </main>
   )
 }

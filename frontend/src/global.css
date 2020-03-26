@@ -1,3 +1,32 @@
+:root {
+  --color-white: #fff;
+  --color-lighter: #f0f0f5;
+  --color-light: #dcdce6;
+  --color-grayer: #737380;
+  --color-gray: #41414d;
+  --color-dark: #333;
+  --color-primary: #e02041;
+
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 18px;
+  --font-size-xlarge: 28px;
+  --font-size-xxlarge: 32px;
+
+  --spacing-xxsmall: 10px;
+  --spacing-medium: 16px;
+  --spacing-large: 18px;
+  --spacing-xlarge: 28px;
+  --spacing-xxlarge: 32px;
+
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --height-medium: 60px;
+  --screen-max-width: 1120px;
+
+  --main-bg-color: --color-lighter;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 * {
@@ -12,15 +41,79 @@ img {
 }
 
 body {
-  font: 400 14px Roboto, sans-serif;
-  background: #f0f0f5;
+  font: 400 var(--font-size-small) Roboto, sans-serif;
+  background: var(--main-bg-color);
   -webkit-font-smoothing: antialiased;
 }
+
+/*
+ * CONTAINERS
+ */
+
+.container {
+  width: 100%;
+  max-width: var(--screen-max-width);
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-shadowed {
+  width: 100%;
+  padding: 96px;
+  background: var(--main-bg-color);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-medium);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column-narrow {
+  width: 100%;
+  max-width: 300px;
+}
+
+.column-medium {
+  width: 100%;
+  max-width: 350px;
+}
+
+.column-wide {
+  width: 100%;
+  max-width: 450px;
+}
+
+
+/*
+ * HEADING
+ */
+
+.title {
+  margin-top: calc(var(--spacing-xxlarge) * 2);
+  margin-bottom: var(--spacing-xxlarge);
+  font-size: var(--font-size-xxlarge);
+}
+
+.subtitle {
+  font-size: var(--font-size-large);
+  line-height: var(--spacing-xxlarge);
+  color: var(--color-grayer);
+}
+
+
+/*
+ * FORMS
+ */
 
 input,
 button,
 textarea {
-  font: 400 18px Roboto, sans-serif;
+  font: 400 var(--font-size-large) Roboto, sans-serif;
 }
 
 button {
@@ -29,40 +122,60 @@ button {
 
 form input {
   width: 100%;
-  height: 60px;
-  color: #333;
-  border: 1px solid #dcdce6;
-  border-radius: 8px;
-  padding: 0 24px;
+  height: var(--height-medium);
+  color: var(--color-dark);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius-medium);
+  padding: 0 var(--spacing-xlarge);
 }
 
 form textarea {
   width: 100%;
   min-height: 140px;
-  color: #333;
-  border: 1px solid #dcdce6;
-  border-radius: 8px;
-  padding: 24px;
-  line-height: 24px;
+  color: var(--color-dark);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius-medium);
+  padding: var(--spacing-xlarge);
+  line-height: var(--spacing-xlarge);
   resize: vertical;
 }
 
+.main-form input,
+.main-form textarea {
+  margin-top: var(--spacing-xxsmall);
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group input+input {
+  margin-left: var(--spacing-xxsmall);
+}
+
+
+/*
+ * BUTTONS
+ */
+
 .button {
   width: 100%;
-  height: 60px;
-  background: #e02041;
-  border: 8px;
-  color: #fff;
+  height: var(--height-medium);
+  background: var(--color-primary);
+  color: var(--color-white);
   border-width: 0;
-  margin-top: 16px;
-  font-weight: 700px;
+  font-weight: 700;
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  font-size: 18px;
-  line-height: 60px;
-  border-radius: 8px;
-  transition: filter 0.2s ease-in-out;
+  font-size: var(--font-size-large);
+  line-height: var(--height-medium);
+  border-radius: var(--radius-medium);
+  transition: filter 0.2s;
+}
+
+.main-form .button {
+  margin-top: var(--spacing-xxsmall);
 }
 
 .button:hover {
@@ -72,18 +185,17 @@ form textarea {
 .back-link {
   display: flex;
   align-items: center;
-  margin-top: 40px;
-  color: #41414d;
-  font-size: 18px;
+  margin-top: var(--spacing-xxlarge);
+  color: var(--color-gray);
+  font-size: var(--font-size-large);
   text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s;
 }
 
 .back-link svg {
   margin-right: 8px;
 }
-
 
 .back-link:hover {
   opacity: 0.8;

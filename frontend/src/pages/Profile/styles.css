@@ -1,8 +1,8 @@
 .profile-container {
   width: 100%;
-  max-width: 1180px;
-  padding: 0 30px;
-  margin: 32px auto;
+  max-width: var(--screen-max-width);
+  padding: 0 var(--spacing-xxlarge);
+  margin: var(--spacing-xxlarge) auto;
 }
 
 .profile-container header {
@@ -11,8 +11,8 @@
 }
 
 .profile-container header span {
-  font-size: 28px;
-  margin-left: 24px;
+  font-size: var(--font-size-xlarge);
+  margin-left: var(--spacing-xlarge);
 }
 
 .profile-container header img {
@@ -26,12 +26,12 @@
 }
 
 .profile-container header button {
-  height: 60px;
+  height: var(--height-medium);
   width: 60px;
-  border-radius: 4px;
+  border-radius: var(--radius-small);
   border: 1px solid #dcdcd6;
   background: transparent;
-  margin-left: 16px;
+  margin-left: var(--spacing-medium);
   transition: border-color 0.2s;
 }
 
@@ -40,29 +40,29 @@
 }
 
 .profile-container h1 {
-  margin-top: 80px;
-  margin-bottom: 24px;
+  margin-top: calc(var(--spacing-xxlarge) * 2);
+  margin-bottom: var(--spacing-xxlarge);
 }
 
 .profile-container ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 24px;
+  grid-gap: var(--spacing-xlarge);
   list-style: none;
 }
 
 .profile-container ul li {
   background: #fff;
-  padding: 24px;
-  border-radius: 8px;
+  padding: var(--spacing-xlarge);
+  border-radius: var(--radius-medium);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
-
 }
 
 .profile-container ul li button {
   position: absolute;
-  right: 24px;
-  top: 24px;
+  right: var(--spacing-xlarge);
+  top: var(--spacing-xlarge);
   border: 0;
   background: transparent;
   transition: opacity 0.2s;
@@ -74,16 +74,16 @@
 
 .profile-container ul li strong {
   display: block;
-  margin-bottom: 16px;
-  color: #41414d;
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-gray);
 }
 
 .profile-container ul li p+strong {
-  margin-top: 32px;
+  margin-top: var(--spacing-xxlarge);
 }
 
 .profile-container ul li p {
-  color: #737380;
-  line-height: 21px;
-  font-size: 16px;
+  color: var(--color-grayer);
+  line-height: 1.61em;
+  font-size: var(--font-size-medium);
 }

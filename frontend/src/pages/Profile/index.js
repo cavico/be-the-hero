@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from "react-icons/fi";
-import api from '../../services/api';
 
 import './styles.css';
+import api from '../../services/api';
 
+import { FiPower, FiTrash2 } from "react-icons/fi";
 import logoImg from '../../assets/logo.svg';
 
 export default function Profile() {
@@ -12,8 +12,8 @@ export default function Profile() {
 
   const history = useHistory();
 
-  const ongName = window.localStorage.getItem('ongName');
-  const ongId = window.localStorage.getItem('ongId');
+  const ongName = localStorage.getItem('ongName');
+  const ongId = localStorage.getItem('ongId');
 
   useEffect(() => {
     api.get('profile', {
@@ -30,20 +30,19 @@ export default function Profile() {
           Authorization: ongId
         }
       });
-
       setIncidents(incidents.filter(incident => incident.id !== id));
     } catch (error) {
-      window.alert('Erro ao deletar caso, tente novamente.');
+      alert('Erro ao deletar caso, tente novamente.');
     }
   }
 
   function handleLogout() {
-    window.localStorage.clear();
+    localStorage.clear();
     history.push('/');
   }
 
   return (
-    <div className="profile-container">
+    <main className="profile-container">
       <header>
         <img src={logoImg} alt="Be The Hero" />
         <span>Bem vinda, {ongName}</span>
@@ -55,7 +54,6 @@ export default function Profile() {
           <FiPower size={16} color="#E02041 " />
         </button>
       </header>
-
       <h1>Casos cadastrados</h1>
       <ul>
         {incidents.map(incident => (
@@ -72,6 +70,6 @@ export default function Profile() {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
